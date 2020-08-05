@@ -13,6 +13,5 @@ explore: order_items_base_explore {
     sql_on: ${order_items.order_id}=${order_summary_ndt.order_id} ;;
   }
 }
-include: "/basic_data_test"
-include: "/dashboard_with_all_dialects.dashboard"
-include: "/date_expression_test.dashboard"
+include: "/**/active_data_tests/*"
+include: "/**/active_dashboards/*"
