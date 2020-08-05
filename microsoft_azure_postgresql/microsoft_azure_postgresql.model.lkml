@@ -1,14 +1,15 @@
 connection: "azure_postgres__test_db"
 ###Nothing below should need to change between models###
 
+include: "order_items.view"
+include: "/_base_views_and_explores/order_items_base_view.view"
+view: +order_items {extends: [order_items_base_view]}
+
 #include global files as necessary
-include: "/base_explore"
-include: "/order_items_global_refinements"
+include: "/_base_views_and_explores/base_explore"
 
-#generic/common includes (uses relative references to pick up this folder's version)
+#special includes by connection
 include: "*"
-
-### connection specific special includes may go here
 
 ### instantiate the explore in this model
 explore: order_items {

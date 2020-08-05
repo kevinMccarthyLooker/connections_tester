@@ -1,5 +1,5 @@
-include: "/order_items_base_view.view"
-include: "/order_summary_ndt.view"
+include: "order_items_base_view.view"
+include: "order_summary_ndt.view"
 # explore: order_items {
 explore: order_items_base_explore {
   extension: required
@@ -14,3 +14,5 @@ explore: order_items_base_explore {
   }
 }
 include: "/basic_data_test"
+include: "/dashboard_with_all_dialects.dashboard"
+include: "/date_expression_test.dashboard"
