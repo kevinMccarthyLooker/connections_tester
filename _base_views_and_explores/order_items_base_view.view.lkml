@@ -1,16 +1,17 @@
+
 view: order_items_base_view {
-  #added here because reference is needed for join in base explore
   label: "Order Items ({{_dialect._name}})"
 
-  dimension: order_id {} #requierd here for generic join and ndt reference
-  dimension_group: created {type:time}
-
-#custom fields we want to add in every model
+### Custom fields we want to add in every model
   dimension: dialect {
     view_label: "INFO"
     label: "_dialect"
     sql: '{{_dialect._name}}' ;;
   }
+
+### Required here for generic join and ndt reference
+  dimension: order_id {}
+  dimension_group: created {type:time}
 
   dimension: bigquery_date_add_syntax_test {
     sql: DATE_ADD(DATE "2020-01-01", INTERVAL 1 DAY) ;;
@@ -32,4 +33,17 @@ view: order_items_base_view {
     sql: {% assign sql = "${date_add_using_expression_test}" | replace:"'","" %}'{{sql}}' ;;
   }
 
+  #moved these to be configured in a refinement.  choose the test/finding and then view the corresponding test dashboard
+  # dimension: special_test {hidden: yes sql:'test not configured';;}
+  # dimension: special_test_description {hidden: yes sql:'test not configured';;}
+
 }
+
+# view: +order_items_base_view {
+#   dimension: special_test {
+#     sql: '1' || '2' ;;
+#   }
+#   dimension: special_test_description {
+#     sql: 'concatenate with pipe, tested: 1 || 2 (*single quotes around each removed for this note)' ;;
+#   }
+# }

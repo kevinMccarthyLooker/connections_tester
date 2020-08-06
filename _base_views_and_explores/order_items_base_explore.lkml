@@ -15,3 +15,4 @@ explore: order_items_base_explore {
 }
 include: "/**/active_data_tests/*"
 include: "/**/active_dashboards/*"
+include: "/**/_dashboards/special_test_dashboard_config"

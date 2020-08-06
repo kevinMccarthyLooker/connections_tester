@@ -6,7 +6,7 @@ include: "/_base_views_and_explores/order_items_base_view.view"
 view: +order_items {extends: [order_items_base_view]}
 
 #include global files as necessary
-include: "/_base_views_and_explores/base_explore"
+include: "/_base_views_and_explores/order_items_base_explore"
 
 #special includes by connection
 include: "*"
