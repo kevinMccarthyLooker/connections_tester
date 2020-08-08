@@ -1,4 +1,4 @@
-connection: "bigquery_publicdata_standard_sql"
+connection: "snowlooker"
 
 ### NOTE: Nothing below should need to change between models
 include:"@{base_explore_include_variable}"

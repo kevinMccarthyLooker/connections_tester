@@ -1,4 +1,6 @@
-view: order_items {
+# view: order_items {
+include: "/_base_views_and_explores/order_items.view"
+view: +order_items {
   sql_table_name: `lookerdata.thelook_web_analytics.order_items`
     ;;
   drill_fields: [id]

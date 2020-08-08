@@ -1,5 +1,5 @@
-include: "/_base_views_and_explores/order_items_base_view.view"
-view: +order_items_base_view {
+include: "/_base_views_and_explores/order_items.view"
+view: +order_items {
   dimension: special_test {sql: 'special test not configured' ;;}
   dimension: special_test_description {
     sql:'{{special_test._sql | strip | replace:"'","`"}}' ;;
@@ -7,7 +7,7 @@ view: +order_items_base_view {
   }
 }
 
-view: +order_items_base_view {
+view: +order_items {
   parameter: test_selector {
     allowed_value: {value:"default__currently testing"}
     allowed_value: {value:"concat with bar"}
