@@ -1,18 +1,18 @@
 # view: order_items {
 include: "/_base_views_and_explores/order_items.view"
 view: +order_items {
-  sql_table_name: looker_test.order_items ;;
-  drill_fields: [id]
-
-  dimension: id {
-    primary_key: yes
-    type: number
-    sql: ${TABLE}.id ;;
+  derived_table: {
+    sql: @{common_dt_sqlfor_combining_info_from_orders_to_order_items} ;;
   }
 
-  dimension: amount {
+  measure: count {
+    type: count
+    drill_fields: [detail*]
+  }
+
+  dimension: id {
     type: number
-    sql: ${TABLE}.amount ;;
+    sql: ${TABLE}."id" ;;
   }
 
   dimension: order_id {
@@ -20,13 +20,40 @@ view: +order_items {
     sql: ${TABLE}.order_id ;;
   }
 
+  dimension: amount {
+    type: number
+    sql: ${TABLE}.amount ;;
+  }
+
   dimension: sku_num {
     type: number
     sql: ${TABLE}.sku_num ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [id]
+  dimension_group: created_at {
+    type: time
+    sql: ${TABLE}.created_at ;;
+  }
+
+  dimension: status {
+    type: string
+    sql: ${TABLE}.status ;;
+  }
+
+  dimension: user_id {
+    type: number
+    sql: ${TABLE}.user_id ;;
+  }
+
+  set: detail {
+    fields: [
+      id,
+      order_id,
+      amount,
+      sku_num,
+      created_at_time,
+      status,
+      user_id
+    ]
   }
 }

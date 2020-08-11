@@ -18,3 +18,18 @@ Use this branch to start a brand new test:
 multiple_connection_tests_with_extends_v1_2020_08_08
 
 Other Notes: another project/set of base tables (eg. faa_demo) and additional connections (db2 had an issue creating order items and other dialects) to be added later.
+
+
+
+###
+2020_08_08 test of fiscal_blocks observations:
+- 1st validation took about a minute (6 dialects)
+
+
+###
+Connections in this instance tried, but failed (alphabetical)
+- bigquery_test_db_connection : skipped because another connection of the same type was used
+- broken : doesn't connect
+- dashdb_test_db : doesn't connect
+- datavirtuality__test_db : doesn't connect
+-

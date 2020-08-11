@@ -5,8 +5,6 @@ view: +order_items {
     sql: @{common_dt_sqlfor_combining_info_from_orders_to_order_items} ;;
   }
 
-  suggestions: no
-
   measure: count {
     type: count
     drill_fields: [detail*]

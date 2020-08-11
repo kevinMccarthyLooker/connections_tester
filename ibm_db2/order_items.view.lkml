@@ -1,11 +1,16 @@
-# view: order_items {
 include: "/_base_views_and_explores/order_items.view"
-view: +order_items {
+# view: +order_items {
+view: db2_order_items {
+  extends: [order_items]
   derived_table: {
-    sql: @{common_dt_sqlfor_combining_info_from_orders_to_order_items} ;;
+    sql: select order_items.*,
+          orders.created_at,
+          orders.status,
+          orders.user_id
+          from order_items
+          left join orders on order_items.order_id=orders.id
+       ;;
   }
-
-  suggestions: no
 
   measure: count {
     type: count
@@ -14,37 +19,37 @@ view: +order_items {
 
   dimension: id {
     type: number
-    sql: ${TABLE}.id ;;
+    sql: ${TABLE}."ID" ;;
   }
 
   dimension: order_id {
     type: number
-    sql: ${TABLE}.order_id ;;
+    sql: ${TABLE}."ORDER_ID" ;;
   }
 
   dimension: amount {
     type: number
-    sql: ${TABLE}.amount ;;
+    sql: ${TABLE}."AMOUNT" ;;
   }
 
   dimension: sku_num {
     type: number
-    sql: ${TABLE}.sku_num ;;
+    sql: ${TABLE}."SKU_NUM" ;;
   }
 
   dimension_group: created_at {
     type: time
-    sql: ${TABLE}.created_at ;;
+    sql: ${TABLE}."CREATED_AT" ;;
   }
 
   dimension: status {
     type: string
-    sql: ${TABLE}.status ;;
+    sql: ${TABLE}."STATUS" ;;
   }
 
   dimension: user_id {
     type: number
-    sql: ${TABLE}.user_id ;;
+    sql: ${TABLE}."USER_ID" ;;
   }
 
   set: detail {
