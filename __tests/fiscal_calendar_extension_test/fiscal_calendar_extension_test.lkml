@@ -41,54 +41,16 @@ view: +order_items {
   # }
 }
 
-test: fiscal_calendar_one_fiscal_calendar_field_financial_years_ago {
-  explore_source: order_items {
-    column: financial_year {field:order_items.financial_years_ago}
-  }
-  assert: field_has_value {
-    expression: NOT is_null(${order_items.financial_years_ago});;
-  }
-}
-
-# test: fiscal_calendar_days_since_first_monday {
+# test: fiscal_calendar_one_fiscal_calendar_field_financial_years_ago {
 #   explore_source: order_items {
-#     column: base_date_date {field:order_items.base_date_date}
-#     column: days_since_first_monday {field:order_items.days_since_first_monday}
+#     column: financial_year {field:order_items.financial_years_ago}
 #   }
-#   assert: field_has_value {expression: NOT is_null(${order_items.base_date_date});;}
+#   assert: field_has_value {
+#     expression: NOT is_null(${order_items.financial_years_ago});;
+#   }
 # }
 
-# test: fiscal_calendar_one_year_prior_first_monday {
-#   explore_source: order_items {
-#     column: base_date_date {field:order_items.base_date_date}
-#     column: one_year_prior_first_monday {field:order_items.one_year_prior_first_monday}
-#   }
-#   assert: field_has_value {expression: NOT is_null(${order_items.base_date_date});;}
-# }
-# test: fiscal_calendar_financial_quarter_of_year {
-#   explore_source: order_items {
-#     column: base_date_date {field:order_items.base_date_date}
-#     column: financial_quarter_of_year {field:order_items.financial_quarter_of_year}
-#   }
-#   assert: field_has_value {expression: NOT is_null(${order_items.base_date_date});;}
-# }
 
-# test: fiscal_calendar_first_monday {
-#   explore_source: order_items {
-#     column: base_date_date {field:order_items.base_date_date}
-#     column: first_monday {field:order_items.first_monday}
-#   }
-#   assert: field_has_value {expression: NOT is_null(${order_items.base_date_date});;}
-# }
-
-# test: fiscal_calendar_type_sql_number {
-#   explore_source: order_items {
-#     column: base_date_date {field:order_items.base_date_date}
-#     column: fiscal_calendar_type_sql_number {field:order_items.fiscal_calendar_type_sql_number}
-#   }
-#   assert: field_has_value {expression: NOT is_null(${order_items.base_date_date});;}
-# }
-# #
 test: fiscal_calendar_several_fields_including_some_that_had_some_athena_errors {
   explore_source: order_items {
     column: base_date_date {field:order_items.base_date_date}
@@ -102,108 +64,36 @@ test: fiscal_calendar_several_fields_including_some_that_had_some_athena_errors 
   assert: field_has_value {expression: NOT is_null(${order_items.base_date_date});;}
 }
 
-#days_since_first_monday
-#one_year_prior_first_monday
-#financial_quarter_of_year
-#fiscal_calendar_type_sql_number
-#first_monday
-
-# test: fiscal_calendar_fail_1 {
+# test: fiscal_calendar_test_all_user_fields_included {
 #   explore_source: order_items {
 #     column: base_date_date {field:order_items.base_date_date}
-#     # column: financial_year {field:order_items.financial_year}
-#     # column: financial_years_ago {field:order_items.financial_years_ago}
-#     # column: first_day_of_financial_year {field:order_items.first_day_of_financial_year}
-#     # column: financial_quarter_of_year {field:order_items.financial_quarter_of_year}
-#     # column: financial_month_of_year {field:order_items.financial_month_of_year}
-#     # column: financial_week_of_year {field:order_items.financial_week_of_year}
-#     # column: financial_day_of_year {field:order_items.financial_day_of_year}
-#     # column: financial_year_quarter_label {field:order_items.financial_year_quarter_label}
-#     # column: financial_quarters_ago {field:order_items.financial_quarters_ago}
-#     column: first_day_of_financial_quarter {field:order_items.first_day_of_financial_quarter}
-#     # column: financial_month_of_quarter {field:order_items.financial_month_of_quarter}
-#     # column: financial_week_of_quarter {field:order_items.financial_week_of_quarter}
-#     # column: financial_day_of_quarter {field:order_items.financial_day_of_quarter}
-#     # column: financial_year_quarter_month_label {field:order_items.financial_year_quarter_month_label}
-#     # column: financial_months_ago {field:order_items.financial_months_ago}
-#     # column: first_day_of_financial_month {field:order_items.first_day_of_financial_month}
-#     # column: financial_week_of_month {field:order_items.financial_week_of_month}
-#     # column: financial_day_of_month {field:order_items.financial_day_of_month}
-#     # column: financial_year_quarter_month_week_label {field:order_items.financial_year_quarter_month_week_label}
-#     # column: financial_weeks_ago {field:order_items.financial_weeks_ago}
-#     # column: first_day_of_financial_week {field:order_items.first_day_of_financial_week}
-#     # column: day_of_week {field:order_items.day_of_week}
-#     # column: first_monday {field:order_items.first_monday}
-#     # column: range_days {field:order_items.range_days}
-#     # column: count {field:order_items.count}
-#   }
-#   assert: field_has_value {expression: NOT is_null(${order_items.base_date_date});;}
-# }
-#
-
-# test: fiscal_calendar_another_failure {
-#   explore_source: order_items {
-#     column: base_date_date {field:order_items.base_date_date}
-#     # column: financial_year {field:order_items.financial_year}
-#     # column: financial_years_ago {field:order_items.financial_years_ago}
+#     column: financial_year {field:order_items.financial_year}
+#     column: financial_years_ago {field:order_items.financial_years_ago}
 #     column: first_day_of_financial_year {field:order_items.first_day_of_financial_year}
-#     # column: financial_quarter_of_year {field:order_items.financial_quarter_of_year}
-#     # column: financial_month_of_year {field:order_items.financial_month_of_year}
-#     # column: financial_week_of_year {field:order_items.financial_week_of_year}
-#     # column: financial_day_of_year {field:order_items.financial_day_of_year}
-#     # column: financial_year_quarter_label {field:order_items.financial_year_quarter_label}
-#     # column: financial_quarters_ago {field:order_items.financial_quarters_ago}
-#     # column: first_day_of_financial_quarter {field:order_items.first_day_of_financial_quarter}
-#     # column: financial_month_of_quarter {field:order_items.financial_month_of_quarter}
-#     # column: financial_week_of_quarter {field:order_items.financial_week_of_quarter}
-#     # column: financial_day_of_quarter {field:order_items.financial_day_of_quarter}
-#     # column: financial_year_quarter_month_label {field:order_items.financial_year_quarter_month_label}
-#     # column: financial_months_ago {field:order_items.financial_months_ago}
-#     # column: first_day_of_financial_month {field:order_items.first_day_of_financial_month}
-#     # column: financial_week_of_month {field:order_items.financial_week_of_month}
-#     # column: financial_day_of_month {field:order_items.financial_day_of_month}
-#     # column: financial_year_quarter_month_week_label {field:order_items.financial_year_quarter_month_week_label}
-#     # column: financial_weeks_ago {field:order_items.financial_weeks_ago}
-#     # column: first_day_of_financial_week {field:order_items.first_day_of_financial_week}
-#     # column: day_of_week {field:order_items.day_of_week}
-#     # column: first_monday {field:order_items.first_monday}
-#     # column: range_days {field:order_items.range_days}
-#     # column: count {field:order_items.count}
+#     column: financial_quarter_of_year {field:order_items.financial_quarter_of_year}
+#     column: financial_month_of_year {field:order_items.financial_month_of_year}
+#     column: financial_week_of_year {field:order_items.financial_week_of_year}
+#     column: financial_day_of_year {field:order_items.financial_day_of_year}
+#     column: financial_year_quarter_label {field:order_items.financial_year_quarter_label}
+#     column: financial_quarters_ago {field:order_items.financial_quarters_ago}
+#     column: first_day_of_financial_quarter {field:order_items.first_day_of_financial_quarter}
+#     column: financial_month_of_quarter {field:order_items.financial_month_of_quarter}
+#     column: financial_week_of_quarter {field:order_items.financial_week_of_quarter}
+#     column: financial_day_of_quarter {field:order_items.financial_day_of_quarter}
+#     column: financial_year_quarter_month_label {field:order_items.financial_year_quarter_month_label}
+#     column: financial_months_ago {field:order_items.financial_months_ago}
+#     column: first_day_of_financial_month {field:order_items.first_day_of_financial_month}
+#     column: financial_week_of_month {field:order_items.financial_week_of_month}
+#     column: financial_day_of_month {field:order_items.financial_day_of_month}
+#     column: financial_year_quarter_month_week_label {field:order_items.financial_year_quarter_month_week_label}
+#     column: financial_weeks_ago {field:order_items.financial_weeks_ago}
+#     column: first_day_of_financial_week {field:order_items.first_day_of_financial_week}
+#     column: day_of_week {field:order_items.day_of_week}
+#     column: first_monday {field:order_items.first_monday}
+#     column: range_days {field:order_items.range_days}
+#     column: count {field:order_items.count}
 #   }
-#   assert: field_has_value {expression: NOT is_null(${order_items.base_date_date});;}
+#   assert: field_has_value {
+#     expression: NOT is_null(${order_items.financial_years_ago});;
+#   }
 # }
-
-
-test: fiscal_calendar_test_all_user_fields_included {
-  explore_source: order_items {
-    column: base_date_date {field:order_items.base_date_date}
-    column: financial_year {field:order_items.financial_year}
-    column: financial_years_ago {field:order_items.financial_years_ago}
-    column: first_day_of_financial_year {field:order_items.first_day_of_financial_year}
-    column: financial_quarter_of_year {field:order_items.financial_quarter_of_year}
-    column: financial_month_of_year {field:order_items.financial_month_of_year}
-    column: financial_week_of_year {field:order_items.financial_week_of_year}
-    column: financial_day_of_year {field:order_items.financial_day_of_year}
-    column: financial_year_quarter_label {field:order_items.financial_year_quarter_label}
-    column: financial_quarters_ago {field:order_items.financial_quarters_ago}
-    column: first_day_of_financial_quarter {field:order_items.first_day_of_financial_quarter}
-    column: financial_month_of_quarter {field:order_items.financial_month_of_quarter}
-    column: financial_week_of_quarter {field:order_items.financial_week_of_quarter}
-    column: financial_day_of_quarter {field:order_items.financial_day_of_quarter}
-    column: financial_year_quarter_month_label {field:order_items.financial_year_quarter_month_label}
-    column: financial_months_ago {field:order_items.financial_months_ago}
-    column: first_day_of_financial_month {field:order_items.first_day_of_financial_month}
-    column: financial_week_of_month {field:order_items.financial_week_of_month}
-    column: financial_day_of_month {field:order_items.financial_day_of_month}
-    column: financial_year_quarter_month_week_label {field:order_items.financial_year_quarter_month_week_label}
-    column: financial_weeks_ago {field:order_items.financial_weeks_ago}
-    column: first_day_of_financial_week {field:order_items.first_day_of_financial_week}
-    column: day_of_week {field:order_items.day_of_week}
-    column: first_monday {field:order_items.first_monday}
-    column: range_days {field:order_items.range_days}
-    column: count {field:order_items.count}
-  }
-  assert: field_has_value {
-    expression: NOT is_null(${order_items.financial_years_ago});;
-  }
-}
